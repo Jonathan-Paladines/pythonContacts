@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+
+{% block body%}
+
+<div class="col-md-4 offse-md-4">
+  <div class="card-body">
+  <form action="/update/{{contacto.0}}" method="POST">
+      <div><br>
+        <div>
+          <h3>EDITAR REGISTRO</h3>
+        </div>
+          <div class="form-group">
+            <label for="">Nombres completos</label>
+            <input type="text"
+              class="form-control" name="fullname" id="" aria-describedby="helpId" value="{{ contacto.1 }}" placeholder="Nombres y apellidos">
+          </div>
+          <br>
+          <div class="form-group">
+              <label for="">Telefono</label>
+              <input type="text"
+                class="form-control" name="phone" id="" aria-describedby="helpId" value="{{ contacto.2 }}" placeholder="Telefono">
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="">Correo Electrónico</label>
+              <input type="text"
+                class="form-control" name="email" id="" aria-describedby="helpId" value="{{ contacto.3 }}" placeholder="Email">
+            </div>
+            <br>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success btn-block">
+            Save
+           </button>
+        </div>
+      </form>
+    </div>
+  </div>  
+
+       {% endblock %}

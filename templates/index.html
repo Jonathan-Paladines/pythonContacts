@@ -1,0 +1,94 @@
+{% extends 'layout.html' %}
+
+{% block body%}
+
+    <div class="row">
+        <div class="col-md-4">
+
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            <div class="card card-body">
+                <form action="/add_contact" method="POST">
+                    <div><br>
+                        <div>
+                            <h3>INGRESAR CONTACTO</h3>
+                          </div>
+                        <div class="form-group">
+                    
+                          <input type="text"
+                            class="form-control" name="fullname" id="" aria-describedby="helpId" placeholder="Nombres y apellidos">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                    
+                            <input type="text"
+                              class="form-control" name="phone" id="" aria-describedby="helpId" placeholder="Telefono">
+                          </div>
+                          <br>
+                          <div class="form-group">
+                    
+                            <input type="text"
+                              class="form-control" name="email" id="" aria-describedby="helpId" placeholder="Email">
+                          </div>
+                          <br>
+                    </div>
+                    
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-info btn-block">
+                        Save
+                       </button>
+                    </div>
+                </form>                    
+                <br><br>
+            </div>
+        </div>
+        <div class="col-md-8">
+
+            <div>
+                <h3>DETALLES DE CONTACTOS</h3>
+              </div>
+            <table class="table table-striped table-bordered bg-white table-sm">
+                <thead>
+                    <tr>
+                        <th>Nombre completo</th>
+                        <th>Telefono</th>
+                        <th>Correo Electrónico</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contacto in contactos %}
+                    <tr>
+                        <td>{{contacto.1}}</td>
+                        <td>{{contacto.2}}</td>
+                        <td>{{contacto.3}}</td>
+                        <td>
+                            <a href="/edit/{{contacto.0}}" class="btn btn-primary btn-sm">Editar</a>
+                            <a href="/delete/{{contacto.0}}" class="btn btn-danger btn-sm btn-delete">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+{% endblock %}
